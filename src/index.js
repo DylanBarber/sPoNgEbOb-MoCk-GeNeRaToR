@@ -13,8 +13,10 @@ class App extends React.Component {
       <div className="pageWrapper">
         <Header />
         <div className="entryArea">
+          <img src='./spongebob.jpg'/>
           <h2>Enter text below</h2>
           <textarea className="textArea" />
+          <button>CoNvErT tExT</button>
         </div>
 
         <Footer />
