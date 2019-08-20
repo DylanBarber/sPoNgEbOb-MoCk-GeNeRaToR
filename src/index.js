@@ -8,15 +8,43 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 class App extends React.Component {
+  state = {
+    inputText: "",
+    caseSwitch: true
+  };
+  textAreaOnChangeHandler = e => {
+    this.setState({ inputText: e.target.value });
+  };
+  convertHandler = () => {
+    let caseSwitch = true;
+    let convertedText = [];
+    let preConvertedText = this.state.inputText.split("");
+    preConvertedText.forEach(character => {
+      if (caseSwitch) {
+        convertedText.push(character.toUpperCase());
+      } else {
+        convertedText.push(character.toLowerCase());
+      }
+      if (character !== " ") {
+        caseSwitch = !caseSwitch;
+      }
+    });
+    this.setState({ inputText: convertedText.join("") });
+  };
+
   render() {
     return (
       <div className="pageWrapper">
         <Header />
         <div className="entryArea">
-          <img src='./spongebob.jpg'/>
+          <img alt="Spongebob" src="./spongebob.jpg" />
           <h2>Enter text below</h2>
-          <textarea className="textArea" />
-          <button>CoNvErT tExT</button>
+          <textarea
+            onChange={this.textAreaOnChangeHandler}
+            className="textArea"
+            value={this.state.inputText}
+          />
+          <button onClick={this.convertHandler}>CoNvErT tExT</button>
         </div>
 
         <Footer />
