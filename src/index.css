@@ -1,6 +1,7 @@
 @font-face {
   font-family: spongebobText;
   src: url("./assets/spongebobFont.ttf");
+  font-family: 'Source Code Pro', monospace;
 }
 * {
   font-family: spongebobText;

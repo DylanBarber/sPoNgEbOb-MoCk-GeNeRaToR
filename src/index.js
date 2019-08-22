@@ -30,10 +30,19 @@ class App extends React.Component {
       }
     });
     let spongebob = document.getElementById('canvas').getContext('2d');
+    spongebob.clearRect(0, 0, 330, 160)
     spongebob.fillStyle = 'white';
-    spongebob.font = '32px Times';
-    spongebob.fillText(convertedText.join(""), 10, 140)
+    spongebob.font = '32px monospace';
     this.setState({ inputText: convertedText.join("") });
+    if (convertedText.join("").length > 15 && convertedText.join("").length <= 30) {
+      spongebob.fillText(convertedText.slice(0,15).join(""), 6, 30)
+      spongebob.fillText(convertedText.slice(15, convertedText.length).join(""), 6, 140)
+    } else if (convertedText.join("").length > 30){
+      return
+    } else {
+      spongebob.fillText(convertedText.join(""), 6, 140)
+    }
+    
   };
 
   render() {
