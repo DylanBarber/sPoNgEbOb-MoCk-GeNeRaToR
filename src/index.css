@@ -46,7 +46,7 @@ canvas {
   height: 30%;
   box-shadow: 0px 0px 15px black;
   border-radius: 15px;
-  background-image: url('./spongebob.jpg');
+  /* background-image: url('./spongebob.jpg'); */
   background-size: contain;
 }
 button {

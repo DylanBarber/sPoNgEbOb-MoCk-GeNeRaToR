@@ -15,6 +15,33 @@ class App extends React.Component {
   textAreaOnChangeHandler = e => {
     this.setState({ inputText: e.target.value });
   };
+  drawSpongebobImage = () => {
+    let spongebob = document.getElementById('canvas').getContext('2d');
+    let base_image = new Image();
+    base_image.src = './spongebob.jpg';
+    base_image.onload = () => {
+      spongebob.drawImage(base_image, 0, 0, base_image.width,    base_image.height,
+        0, 0, 307.88, 153.94)
+      this.drawMeme()
+    }
+  }
+  componentDidMount = () => {
+    this.drawSpongebobImage()
+  }
+  drawMeme = () => {
+    let spongebob = document.getElementById('canvas').getContext('2d');
+    spongebob.fillStyle = 'white';
+    spongebob.font = '32px monospace';
+    
+    if (this.state.inputText.length > 15 && this.state.inputText.length <= 30) {
+      spongebob.fillText(this.state.inputText.slice(0,15), 6, 30)
+      spongebob.fillText(this.state.inputText.slice(15, this.state.inputText.length), 6, 140)
+    } else if (this.state.inputText.length > 30){
+      return
+    } else {
+        spongebob.fillText(this.state.inputText, 6, 140)
+    }
+  }
   convertHandler = () => {
     let caseSwitch = true;
     let convertedText = [];
@@ -29,20 +56,8 @@ class App extends React.Component {
         caseSwitch = !caseSwitch;
       }
     });
-    let spongebob = document.getElementById('canvas').getContext('2d');
-    spongebob.clearRect(0, 0, 330, 160)
-    spongebob.fillStyle = 'white';
-    spongebob.font = '32px monospace';
     this.setState({ inputText: convertedText.join("") });
-    if (convertedText.join("").length > 15 && convertedText.join("").length <= 30) {
-      spongebob.fillText(convertedText.slice(0,15).join(""), 6, 30)
-      spongebob.fillText(convertedText.slice(15, convertedText.length).join(""), 6, 140)
-    } else if (convertedText.join("").length > 30){
-      return
-    } else {
-      spongebob.fillText(convertedText.join(""), 6, 140)
-    }
-    
+    this.drawSpongebobImage()
   };
 
   render() {
