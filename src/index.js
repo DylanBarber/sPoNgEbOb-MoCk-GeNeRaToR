@@ -25,10 +25,14 @@ class App extends React.Component {
       } else {
         convertedText.push(character.toLowerCase());
       }
-      if (character !== " ") {
+      if (character !== " " && character !== "'") {
         caseSwitch = !caseSwitch;
       }
     });
+    let spongebob = document.getElementById('canvas').getContext('2d');
+    spongebob.fillStyle = 'white';
+    spongebob.font = '32px Times';
+    spongebob.fillText(convertedText.join(""), 10, 140)
     this.setState({ inputText: convertedText.join("") });
   };
 
@@ -37,7 +41,7 @@ class App extends React.Component {
       <div className="pageWrapper">
         <Header />
         <div className="entryArea">
-          <canvas/>
+          <canvas id='canvas'/>
           <h2>Enter text below</h2>
           <textarea
             onChange={this.textAreaOnChangeHandler}
