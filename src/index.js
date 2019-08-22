@@ -59,7 +59,11 @@ class App extends React.Component {
     this.setState({ inputText: convertedText.join("") });
     this.drawSpongebobImage()
   };
-
+  downloadCanvas = (e) => {
+    let canvas = document.getElementById("canvas");
+    var image = canvas.toDataURL("image/jpg");
+    e.target.href = image;
+  };
   render() {
     return (
       <div className="pageWrapper">
@@ -73,6 +77,7 @@ class App extends React.Component {
             value={this.state.inputText}
           />
           <button onClick={this.convertHandler}>CoNvErT tExT</button>
+          <a id="download" download="myImage.jpg" href="####" onClick={this.downloadCanvas}>DoWnLoAd mEmE</a>
         </div>
 
         <Footer />
