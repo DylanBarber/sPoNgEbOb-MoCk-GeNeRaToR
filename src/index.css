@@ -32,8 +32,6 @@ footer {
   border-radius: 15px;
   font-size: 18px;
 }
-h2 {
-}
 .entryArea {
   display: flex;
   flex-direction: column;
@@ -43,10 +41,12 @@ h2 {
   height: 100%;
   width: 100%;
 }
-img {
+canvas {
   height: 30%;
   box-shadow: 0px 0px 15px black;
   border-radius: 15px;
+  background-image: url('./spongebob.jpg');
+  background-size: contain;
 }
 button {
   background-color: #aead0d;

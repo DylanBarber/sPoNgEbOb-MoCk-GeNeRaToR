@@ -37,7 +37,7 @@ class App extends React.Component {
       <div className="pageWrapper">
         <Header />
         <div className="entryArea">
-          <img alt="Spongebob" src="./spongebob.jpg" />
+          <canvas/>
           <h2>Enter text below</h2>
           <textarea
             onChange={this.textAreaOnChangeHandler}
